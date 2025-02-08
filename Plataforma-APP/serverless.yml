@@ -14,15 +14,22 @@ provider:
     PASSWORD_ADMIN: passwordValido
 
 functions:
-  login:
-    handler: handler.login
+  obtenerBecarios:
+    handler: handler.obtenerBecarios
     events:
       - http:
-          path: login
-          method: post
+          path: obtenerBecarios
+          method: get
           cors:
             origin: '*'  # Permitir cualquier origen (ajustar en producción)
             headers:
               - Content-Type
               - Authorization
-            allowCredentials: true
+            allowCredentials: false
+package:
+  include:
+    - src/config/**
+    - src/models/**
+    - src/repositories/**
+    - src/services/**
+    - handler.js
