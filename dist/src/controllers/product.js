@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBecarios = void 0;
-const becario_1 = require("../models/becario");
-const getBecarios = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const productDataBase = yield becario_1.becario.findAll();
-    res.json(productDataBase);
+exports.getProducts = void 0;
+const product_1 = require("../models/product");
+const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const listProducts = yield product_1.Product.findAll();
+    res.json(listProducts);
 });
-exports.getBecarios = getBecarios;
+exports.getProducts = getProducts;

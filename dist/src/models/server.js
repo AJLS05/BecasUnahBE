@@ -13,38 +13,43 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const becario_1 = __importDefault(require("../routes/becario"));
+const cors_1 = __importDefault(require("cors"));
+const product_1 = __importDefault(require("../routes/product"));
 const user_1 = __importDefault(require("../routes/user"));
-const becario_2 = require("../models/becario");
+const product_2 = require("./product");
+const user_2 = require("./user");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || "1433"; // Asegurar un puerto
+        this.port = process.env.PORT || '3001';
         this.listen();
-        this.middlewares();
+        this.midlewares();
         this.routes();
-        this.dbConnect(); // Intentar conectar la BD
+        this.dbConnect();
     }
     listen() {
         this.app.listen(this.port, () => {
-            console.log('📌 Aplicación corriendo en el puerto: ' + this.port);
+            console.log('Aplicacion corriendo en el puerto ' + this.port);
         });
     }
     routes() {
-        this.app.use('/api/becario', becario_1.default);
-        this.app.use('/api/userss', user_1.default);
+        this.app.use('/api/products', product_1.default);
+        this.app.use('/api/users', user_1.default);
     }
-    middlewares() {
+    midlewares() {
+        // Parseo body
         this.app.use(express_1.default.json());
+        // Cors
+        this.app.use((0, cors_1.default)());
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield becario_2.becario.sync(); // ✅ Usamos `models` importado desde `conexion.ts`
-                console.log("📌 Base de datos sincronizada correctamente.");
+                yield product_2.Product.sync();
+                yield user_2.User.sync();
             }
             catch (error) {
-                console.log("❌ Error al sincronizar la base de datos:", error);
+                console.error('Unable to connect to the database:', error);
             }
         });
     }
