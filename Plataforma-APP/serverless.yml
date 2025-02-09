@@ -5,31 +5,11 @@ provider:
   runtime: nodejs18.x  # Usar Node.js 18.x (soportado por AWS Lambda)
   region: us-east-1
   stage: dev
-  memorySize: 128  # Tamaño de memoria en MB (ajustable según necesidades)
-  timeout: 10  # Tiempo máximo de ejecución en segundos
-  environment:
-    MAX_INTENTOS: 3
-    TIEMPO_BLOQUEO: 60000
-    USUARIO_ADMIN: usuarioValido
-    PASSWORD_ADMIN: passwordValido
 
 functions:
-  obtenerBecarios:
-    handler: handler.obtenerBecarios
+  login:
+    handler: src/functions/loginHandler.login
     events:
       - http:
-          path: obtenerBecarios
-          method: get
-          cors:
-            origin: '*'  # Permitir cualquier origen (ajustar en producción)
-            headers:
-              - Content-Type
-              - Authorization
-            allowCredentials: false
-package:
-  include:
-    - src/config/**
-    - src/models/**
-    - src/repositories/**
-    - src/services/**
-    - handler.js
+          path: login
+          method: post
