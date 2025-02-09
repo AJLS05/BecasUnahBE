@@ -13,3 +13,4 @@ functions:
       - http:
           path: login
           method: post
+          cors: true  # Habilitar CORS para todas las solicitudes

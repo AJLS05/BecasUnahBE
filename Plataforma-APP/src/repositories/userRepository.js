@@ -9,9 +9,9 @@ class UserRepository {
           if (!sequelize) throw new Error('Sequelize no está inicializado');
           
           const result = await sequelize.query(
-            'SELECT * FROM becario WHERE no_cuenta = :no_cuenta',
+            'SELECT * FROM becario WHERE no_cuenta = :no_cuenta AND contrasena = :contrasena',
             { 
-              replacements: { no_cuenta },
+              replacements: { no_cuenta,contrasena },
               type: QueryTypes.SELECT 
             }
           );

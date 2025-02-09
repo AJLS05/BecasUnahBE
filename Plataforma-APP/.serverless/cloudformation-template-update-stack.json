@@ -91,7 +91,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-02753f43-1d78",
-          "S3Key": "serverless/Plataforma-APP/dev/1739132738100-2025-02-09T20:25:38.100Z/Plataforma-APP.zip"
+          "S3Key": "serverless/Plataforma-APP/dev/1739139793425-2025-02-09T22:23:13.425Z/Plataforma-APP.zip"
         },
         "Handler": "src/functions/loginHandler.login",
         "Runtime": "nodejs18.x",
@@ -109,14 +109,14 @@
         "LoginLogGroup"
       ]
     },
-    "LoginLambdaVersionb7TY9l6EQ8LVhRYOYG797TCu5g0J8grBfU5683xXPdg": {
+    "LoginLambdaVersiona1HpWjWflpeUiuuEZt1U27t4rbwsHEs6bkZxyg286Mk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginLambdaFunction"
         },
-        "CodeSha256": "Os9ya+DoLMTMjik5CV/WlWFD3Ar3uNssjnDHua0fcmw="
+        "CodeSha256": "rWQxFUm16CFWGt/mZFOtpqoncF3nCwuupWkGGNd7lmI="
       }
     },
     "ApiGatewayRestApi": {
@@ -141,6 +141,51 @@
           ]
         },
         "PathPart": "login",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodLoginOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceLogin"
+        },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -192,7 +237,7 @@
         "LoginLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1739132722678": {
+    "ApiGatewayDeployment1739139773463": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -201,6 +246,7 @@
         "StageName": "dev"
       },
       "DependsOn": [
+        "ApiGatewayMethodLoginOptions",
         "ApiGatewayMethodLoginPost"
       ]
     },
@@ -252,7 +298,7 @@
     "LoginLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginLambdaVersionb7TY9l6EQ8LVhRYOYG797TCu5g0J8grBfU5683xXPdg"
+        "Ref": "LoginLambdaVersiona1HpWjWflpeUiuuEZt1U27t4rbwsHEs6bkZxyg286Mk"
       },
       "Export": {
         "Name": "sls-Plataforma-APP-dev-LoginLambdaFunctionQualifiedArn"
