@@ -2,5 +2,5 @@ node_modules
 .serverless
 
 # Ignorar archivo de variables de entorno
-.env
+
 
