@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../config/conexion'); // Asegúrate de que la ruta sea correcta
+const sequelize = require('../config/conexion'); // Asegúrate de que la ruta sea correcta
 
 const Becario = sequelize.define('becario', {
   becario_id: {
@@ -35,8 +35,8 @@ const Becario = sequelize.define('becario', {
     type: DataTypes.STRING(10),
     allowNull: true  // Se permite nulo, ya que no se especifica NOT NULL
   },
-  ultimo_acceso: {
-    type: DataTypes.DATE,
+  primer_ingreso: {
+    type: DataTypes.BOOLEAN,
     allowNull: true
   }
 }, {

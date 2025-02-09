@@ -1,11 +1,11 @@
-const loginService = require('../services/loginService');
+import { validateUser } from '../services/loginService';
 
 class LoginController {
     async login(req, res) {
         const { no_cuenta, contrasena } = req.body;
 
         try {
-            const user = await loginService.validateUser(no_cuenta, contrasena);
+            const user = await validateUser(no_cuenta, contrasena);
             return res.status(200).json(user);
         } catch (error) {
             return res.status(401).json({ message: error.message });
@@ -13,4 +13,4 @@ class LoginController {
     }
 }
 
-module.exports = new LoginController();
+export default new LoginController();

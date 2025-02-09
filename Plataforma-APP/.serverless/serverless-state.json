@@ -103,7 +103,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-02753f43-1d78",
-                "S3Key": "serverless/Plataforma-APP/dev/1739085344761-2025-02-09T07:15:44.761Z/Plataforma-APP.zip"
+                "S3Key": "serverless/Plataforma-APP/dev/1739132738100-2025-02-09T20:25:38.100Z/Plataforma-APP.zip"
               },
               "Handler": "src/functions/loginHandler.login",
               "Runtime": "nodejs18.x",
@@ -121,14 +121,14 @@
               "LoginLogGroup"
             ]
           },
-          "LoginLambdaVersionNHTeMnZ0QoaU1DHbaKbfFSTcNzwKNZf3LDFFx7z69E": {
+          "LoginLambdaVersionb7TY9l6EQ8LVhRYOYG797TCu5g0J8grBfU5683xXPdg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LoginLambdaFunction"
               },
-              "CodeSha256": "Isw9M4HlK7/TDkKD60AS/Gr3AuT20OSghYxYm0w8NQ4="
+              "CodeSha256": "Os9ya+DoLMTMjik5CV/WlWFD3Ar3uNssjnDHua0fcmw="
             }
           },
           "ApiGatewayRestApi": {
@@ -204,7 +204,7 @@
               "LoginLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1739085330241": {
+          "ApiGatewayDeployment1739132722678": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -264,7 +264,7 @@
           "LoginLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LoginLambdaVersionNHTeMnZ0QoaU1DHbaKbfFSTcNzwKNZf3LDFFx7z69E"
+              "Ref": "LoginLambdaVersionb7TY9l6EQ8LVhRYOYG797TCu5g0J8grBfU5683xXPdg"
             },
             "Export": {
               "Name": "sls-Plataforma-APP-dev-LoginLambdaFunctionQualifiedArn"
@@ -319,7 +319,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "LoginLambdaVersionNHTeMnZ0QoaU1DHbaKbfFSTcNzwKNZf3LDFFx7z69E"
+        "versionLogicalId": "LoginLambdaVersionb7TY9l6EQ8LVhRYOYG797TCu5g0J8grBfU5683xXPdg"
       }
     },
     "configValidationMode": "warn",
@@ -339,7 +339,7 @@
     "artifact": "C:\\Users\\djcasco\\OneDrive - Universidad Nacional Autónoma de Honduras\\Escritorio\\Plataforma\\BecasUnahBE\\Plataforma-APP\\.serverless\\Plataforma-APP.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/Plataforma-APP/dev/1739085344761-2025-02-09T07:15:44.761Z",
+    "artifactDirectoryName": "serverless/Plataforma-APP/dev/1739132738100-2025-02-09T20:25:38.100Z",
     "artifact": "Plataforma-APP.zip"
   }
 }
