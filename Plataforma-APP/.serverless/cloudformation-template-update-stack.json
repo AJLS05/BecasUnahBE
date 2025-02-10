@@ -91,7 +91,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-02753f43-1d78",
-          "S3Key": "serverless/Plataforma-APP/dev/1739139793425-2025-02-09T22:23:13.425Z/Plataforma-APP.zip"
+          "S3Key": "serverless/Plataforma-APP/dev/1739147839661-2025-02-10T00:37:19.661Z/Plataforma-APP.zip"
         },
         "Handler": "src/functions/loginHandler.login",
         "Runtime": "nodejs18.x",
@@ -109,14 +109,14 @@
         "LoginLogGroup"
       ]
     },
-    "LoginLambdaVersiona1HpWjWflpeUiuuEZt1U27t4rbwsHEs6bkZxyg286Mk": {
+    "LoginLambdaVersionq9BUE4pf9U47ZU9TT05yPr5TeMzDmQswW1c6rhLqtKI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginLambdaFunction"
         },
-        "CodeSha256": "rWQxFUm16CFWGt/mZFOtpqoncF3nCwuupWkGGNd7lmI="
+        "CodeSha256": "j0pZgwXGiHckfUjf3RDYPSlCCNoBETgZHkeSDzBMSto="
       }
     },
     "ApiGatewayRestApi": {
@@ -237,7 +237,7 @@
         "LoginLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1739139773463": {
+    "ApiGatewayDeployment1739147825592": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -298,7 +298,7 @@
     "LoginLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginLambdaVersiona1HpWjWflpeUiuuEZt1U27t4rbwsHEs6bkZxyg286Mk"
+        "Ref": "LoginLambdaVersionq9BUE4pf9U47ZU9TT05yPr5TeMzDmQswW1c6rhLqtKI"
       },
       "Export": {
         "Name": "sls-Plataforma-APP-dev-LoginLambdaFunctionQualifiedArn"
