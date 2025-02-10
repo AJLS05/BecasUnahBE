@@ -14,3 +14,11 @@ functions:
           path: login
           method: post
           cors: true  # Habilitar CORS para todas las solicitudes
+
+  faq:
+    handler: src/functions/FaqHandler.faq
+    events:
+      - http:
+          path: faq
+          method: get
+          cors: true
