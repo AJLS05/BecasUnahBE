@@ -8,7 +8,7 @@ const headersACL ={
 
 module.exports.login = async (event) => {
     const { no_cuenta, contrasena } = JSON.parse(event.body);
-
+    obtenerPreguntas
     try {
         const user = await userService.validateUser(no_cuenta, contrasena);
         return {

@@ -1,0 +1,23 @@
+service: questions-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x  # Usar Node.js 18.x (soportado por AWS Lambda)
+  region: us-east-1
+  stage: dev
+
+functions:
+  getPreguntasFrecuentes:
+    handler: src/functions/questionHandler.getPreguntasFrecuentes
+    events:
+      - http:
+          path: question
+          method: get
+          cors:
+            origin: '*'  # Permitir solicitudes de cualquier dominio
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+            allowCredentials: false
